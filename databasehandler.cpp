@@ -41,6 +41,20 @@ void DatabaseHandler::DatabaseInsert(const QString& entry)
     QSqlQuery query;
     query.prepare("INSERT INTO entries (entry) VALUES (:entry)");
     query.bindValue(":entry", entry);
-    if(!query.exec())
+    if (!query.exec())
             qWarning() << "DatabaseHandler::DatabaseInsert - ERROR: " << query.lastError().text();
+}
+
+QSqlQuery DatabaseHandler::GetAllEntries()
+{
+    QSqlQuery query;
+    query.prepare("SELECT * FROM entries;");
+    if (!query.exec())
+    {
+        qWarning() << "DatabaseHandler::GetAllEntries - ERROR: " << query.lastError().text();
+    }
+    else
+    {
+        return query;
+    }
 }

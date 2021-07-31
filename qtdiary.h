@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include "databasehandler.h"
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QScrollArea>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class QtDiary; }
@@ -19,6 +22,10 @@ public:
 
 private slots:
     void on_saveButton_clicked();
+
+    void on_newButton_clicked();
+
+    void on_readButton_clicked();
 
 private:
     Ui::QtDiary *ui;
