@@ -2,6 +2,8 @@
 #define QTDIARY_H
 
 #include <QMainWindow>
+#include <QPushButton>
+#include "databasehandler.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class QtDiary; }
@@ -16,9 +18,10 @@ public:
     ~QtDiary();
 
 private slots:
-    void clear();
+    void on_saveButton_clicked();
 
 private:
     Ui::QtDiary *ui;
+    DatabaseHandler *dbHandler = new DatabaseHandler;
 };
 #endif // QTDIARY_H

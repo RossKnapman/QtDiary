@@ -11,3 +11,5 @@ A GUI program that I would like to create to replace Day One, which I currently 
 - [ ] Obtain the weather and store it with the entry
 - [ ] Display weather when an entry is read (e.g. as an emoji)
 - [ ] PDF export
+- [ ] Import from Day One
+- [ ] Backups
