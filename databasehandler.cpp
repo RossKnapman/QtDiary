@@ -58,3 +58,18 @@ QSqlQuery DatabaseHandler::GetAllEntries()
         return query;
     }
 }
+
+QString DatabaseHandler::getEntry(const int& id)
+{
+    QSqlQuery query;
+    query.prepare("SELECT entry FROM entries WHERE id=:id");
+    query.bindValue(":id", id);
+    if (!query.exec())
+    {
+        qWarning() << "DatabaseHandler::getEntry - ERROR: " << query.lastError().text();
+    }
+    query.next();
+    QString entry = query.value(0).toString();
+    qDebug() << entry;
+    return entry;
+}

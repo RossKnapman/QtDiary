@@ -45,11 +45,13 @@ void QtDiary::on_readButton_clicked()
         entryPreview->setFixedSize(ui->scrollArea->width(), 100);
         entryPreview->setStyleSheet("QLabel { background-color : white; color : blue; }");
         entryPreview->setText(query.value(1).toString());
-
+        entryPreview->ui = this->ui;
+        entryPreview->dbHandler = this->dbHandler;
+        entryPreview->id = query.value(0).toInt();
         layout->addWidget(entryPreview);
     }
 
-    ui->scrollArea->setFixedSize(ui->ReadPage->width(), ui->ReadPage->height());
+    ui->scrollArea->setFixedSize(ui->EntriesPage->width(), ui->EntriesPage->height());
     ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->scrollArea->setWidget(window);
     ui->scrollArea->show();

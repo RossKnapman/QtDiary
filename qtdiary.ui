@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="WritePage">
      <widget class="QTextEdit" name="textEdit">
@@ -51,7 +51,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="ReadPage">
+    <widget class="QWidget" name="EntriesPage">
      <widget class="QScrollArea" name="scrollArea">
       <property name="geometry">
        <rect>
@@ -74,6 +74,18 @@
         </rect>
        </property>
       </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ReadEntry">
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>-5</x>
+        <y>1</y>
+        <width>671</width>
+        <height>431</height>
+       </rect>
+      </property>
      </widget>
     </widget>
    </widget>
