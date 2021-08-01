@@ -17,50 +17,22 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>9</x>
+      <x>119</x>
       <y>9</y>
-      <width>781</width>
+      <width>671</width>
       <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
-    <widget class="QWidget" name="HomePage">
-     <widget class="QPushButton" name="newButton">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>150</y>
-        <width>113</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>New Entry</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="readButton">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
-        <y>160</y>
-        <width>113</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Reader</string>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="WritePage">
      <widget class="QTextEdit" name="textEdit">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>10</x>
         <y>0</y>
-        <width>781</width>
+        <width>671</width>
         <height>401</height>
        </rect>
       </property>
@@ -68,7 +40,7 @@
      <widget class="QPushButton" name="saveButton">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>550</x>
         <y>400</y>
         <width>113</width>
         <height>32</height>
@@ -79,7 +51,57 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="ReadPage"/>
+    <widget class="QWidget" name="ReadPage">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>781</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>779</width>
+         <height>389</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="newButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>New Entry</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="readButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reader</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

@@ -10,11 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     databasehandler.cpp \
+    entrypreview.cpp \
     main.cpp \
     qtdiary.cpp
 
 HEADERS += \
     databasehandler.h \
+    entrypreview.h \
     qtdiary.h
 
 FORMS += \
