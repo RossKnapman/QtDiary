@@ -19,13 +19,12 @@ class QtDiary : public QMainWindow
 public:
     QtDiary(QWidget *parent = nullptr);
     ~QtDiary();
+    bool isEdit;
 
 private slots:
-    void on_saveButton_clicked();
-
     void on_newButton_clicked();
-
     void on_readButton_clicked();
+    void on_editDoneButton_clicked();
 
 private:
     Ui::QtDiary *ui;

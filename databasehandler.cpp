@@ -45,6 +45,16 @@ void DatabaseHandler::DatabaseInsert(const QString& entry)
             qWarning() << "DatabaseHandler::DatabaseInsert - ERROR: " << query.lastError().text();
 }
 
+void DatabaseHandler::databaseUpdate(const int& id, const QString& entry)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE entries SET entry = :entry WHERE id=:id;");
+    query.bindValue(":entry", entry);
+    query.bindValue(":id", id);
+    if (!query.exec())
+        qWarning() << "DatabaseHandler::databaseUpdate - ERROR: " << query.lastError().text();
+}
+
 QSqlQuery DatabaseHandler::GetAllEntries()
 {
     QSqlQuery query;
@@ -70,6 +80,5 @@ QString DatabaseHandler::getEntry(const int& id)
     }
     query.next();
     QString entry = query.value(0).toString();
-    qDebug() << entry;
     return entry;
 }

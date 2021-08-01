@@ -15,6 +15,7 @@ public:
     void DatabaseConnect();
     void DatabaseInit();
     void DatabaseInsert(const QString&);
+    void databaseUpdate(const int& id, const QString& entry);
     QSqlQuery GetAllEntries();
     QString getEntry(const int&);
 

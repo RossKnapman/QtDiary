@@ -8,8 +8,10 @@ EntryPreview::EntryPreview(QWidget* parent, Qt::WindowFlags f) : QLabel(parent)
 void EntryPreview::showEntry()
 {
     QString entryText = dbHandler->getEntry(this->id);
-    ui->stackedWidget->setCurrentIndex(2);
-    ui->textBrowser->setText(entryText);
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->editEntry->setText(entryText);
+    ui->editEntry->setReadOnly(true);
+    ui->editDoneButton->setText("Edit");
 }
 
 void EntryPreview::mousePressEvent(QMouseEvent *event)

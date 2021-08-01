@@ -8,7 +8,6 @@ QtDiary::QtDiary(QWidget *parent)
     , ui(new Ui::QtDiary)
 {
     ui->setupUi(this);
-//    setCentralWidget(ui->stackedWidget);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -17,16 +16,13 @@ QtDiary::~QtDiary()
     delete ui;
 }
 
-void QtDiary::on_saveButton_clicked()
-{
-    QString text = ui->textEdit->toPlainText();
-    this->dbHandler->DatabaseInsert(text);
-    ui->textEdit->clear();
-}
-
 void QtDiary::on_newButton_clicked()
 {
+    ui->editEntry->clear();
     ui->stackedWidget->setCurrentIndex(0);
+    ui->editEntry->setReadOnly(false);
+    isEdit = true;
+    ui->editDoneButton->setText("Done");
 }
 
 void QtDiary::on_readButton_clicked()
@@ -39,11 +35,11 @@ void QtDiary::on_readButton_clicked()
     QWidget *window = new QWidget(this);
     QVBoxLayout *layout = new QVBoxLayout(window);
 
-    while(query.next())
+    while (query.next())
     {
         EntryPreview *entryPreview = new EntryPreview(ui->scrollArea);
-        entryPreview->setFixedSize(ui->scrollArea->width(), 100);
-        entryPreview->setStyleSheet("QLabel { background-color : white; color : blue; }");
+        entryPreview->setFixedSize(0.96*ui->scrollArea->width(), 100);
+        entryPreview->setStyleSheet("QLabel { background-color: white; color: blue; padding: 5px; }");
         entryPreview->setText(query.value(1).toString());
         entryPreview->ui = this->ui;
         entryPreview->dbHandler = this->dbHandler;
@@ -55,4 +51,23 @@ void QtDiary::on_readButton_clicked()
     ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->scrollArea->setWidget(window);
     ui->scrollArea->show();
+}
+
+void QtDiary::on_editDoneButton_clicked()
+{
+    if (isEdit)
+    {
+        isEdit = false;
+        ui->editDoneButton->setText("Edit");
+        ui->editEntry->setReadOnly(true);
+        QString text = ui->editEntry->toPlainText();
+        this->dbHandler->DatabaseInsert(text);
+        ui->editEntry->setReadOnly(true);
+    }
+    else
+    {
+        isEdit = true;
+        ui->editDoneButton->setText("Done");
+        ui->editEntry->setReadOnly(false);
+    }
 }
