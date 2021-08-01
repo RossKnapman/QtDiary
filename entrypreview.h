@@ -10,9 +10,10 @@ class EntryPreview : public QLabel
 {
     Q_OBJECT
     public:
-        explicit EntryPreview(QWidget *parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
+        explicit EntryPreview(QWidget *parent = Q_NULLPTR, QtDiary *qtdiary = Q_NULLPTR);
         DatabaseHandler *dbHandler;
         Ui::QtDiary *ui;
+        QtDiary *qtdiary;
         int id;
 
     signals:

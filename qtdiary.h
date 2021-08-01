@@ -20,6 +20,7 @@ public:
     QtDiary(QWidget *parent = nullptr);
     ~QtDiary();
     bool isEdit;
+    int id;  // The ID of the entry being edited (set to -1 for a new entry)
 
 private slots:
     void on_newButton_clicked();

@@ -1,7 +1,8 @@
 #include "entrypreview.h"
 
-EntryPreview::EntryPreview(QWidget* parent, Qt::WindowFlags f) : QLabel(parent)
+EntryPreview::EntryPreview(QWidget* parent, QtDiary *qtdiary) : QLabel(parent)
 {
+    this->qtdiary = qtdiary;
     connect(this, SIGNAL (clicked()), this, SLOT (showEntry()));
 }
 
@@ -12,6 +13,7 @@ void EntryPreview::showEntry()
     ui->editEntry->setText(entryText);
     ui->editEntry->setReadOnly(true);
     ui->editDoneButton->setText("Edit");
+    qtdiary->id = id;
 }
 
 void EntryPreview::mousePressEvent(QMouseEvent *event)

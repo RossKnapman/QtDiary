@@ -9,6 +9,7 @@ QtDiary::QtDiary(QWidget *parent)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
+    id = -1;
 }
 
 QtDiary::~QtDiary()
@@ -21,6 +22,7 @@ void QtDiary::on_newButton_clicked()
     ui->editEntry->clear();
     ui->stackedWidget->setCurrentIndex(0);
     ui->editEntry->setReadOnly(false);
+    id = -1;
     isEdit = true;
     ui->editDoneButton->setText("Done");
 }
@@ -37,9 +39,9 @@ void QtDiary::on_readButton_clicked()
 
     while (query.next())
     {
-        EntryPreview *entryPreview = new EntryPreview(ui->scrollArea);
+        EntryPreview *entryPreview = new EntryPreview(ui->scrollArea, this);
         entryPreview->setFixedSize(0.96*ui->scrollArea->width(), 100);
-        entryPreview->setStyleSheet("QLabel { background-color: white; color: blue; padding: 5px; }");
+        entryPreview->setStyleSheet("QLabel { background-color: white; color: blue; }");
         entryPreview->setText(query.value(1).toString());
         entryPreview->ui = this->ui;
         entryPreview->dbHandler = this->dbHandler;
@@ -61,8 +63,16 @@ void QtDiary::on_editDoneButton_clicked()
         ui->editDoneButton->setText("Edit");
         ui->editEntry->setReadOnly(true);
         QString text = ui->editEntry->toPlainText();
-        this->dbHandler->DatabaseInsert(text);
         ui->editEntry->setReadOnly(true);
+
+        if (id == -1)  // Creating a new entry (we set id = -1 for new entries)
+        {
+            this->dbHandler->DatabaseInsert(text);
+        }
+        else
+        {
+            this->dbHandler->databaseUpdate(id, text);
+        }
     }
     else
     {
