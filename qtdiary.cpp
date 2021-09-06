@@ -32,8 +32,6 @@ void QtDiary::on_readButton_clicked()
     ui->stackedWidget->setCurrentIndex(1);
     QSqlQuery query = this->dbHandler->GetAllEntries();
 
-    query.next();
-
     QWidget *window = new QWidget(this);
     QVBoxLayout *layout = new QVBoxLayout(window);
 
